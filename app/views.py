@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 
-# Create your views here.
-def home(request):
-    return render(request, 'home.html')
+# # Create your views here.
+# def home(request):
+#     return render(request, 'home.html')
 
 # Formulário de cadastro de usuários:
 
@@ -39,7 +39,6 @@ def painel(request):
 
 
 # Formulário do login:
-
 def dologin(request):
     data = {}
     user = authenticate(
@@ -53,14 +52,10 @@ def dologin(request):
         return render(request, 'painel.html', data)
 
 # Página inicial do dashboard
-
-
 def dashboard(request):
-    return render(request, 'dashboard/home.html')
+    return render(request,'dashboard/home.html')
 
 # Logout do sistema:
-
-
 def logouts(request):
     logout(request)
     return redirect('/painel/')
@@ -70,7 +65,7 @@ def logouts(request):
 
 def changePassword(request):
     user = User.objects.get(email=request.user.email)
-    user.set_password(request.POST['password'])
+    user.set_password()
     user.save()
     logout(request)
     return redirect('/painel/')
