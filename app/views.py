@@ -59,3 +59,19 @@ def changePassword(request):
     user.save()
     logout(request)
     return redirect('/painel/')
+
+
+# Formulário usuário:
+def usuario(request):
+    return render(request, 'usuario.html')
+
+
+# Formulário pets:
+def pets(request):
+    return render(request, 'pets.html')
+
+
+# Relatório de todos os cadastros:
+def relatorio(request):
+    return render(request, 'relatorio.html')
+

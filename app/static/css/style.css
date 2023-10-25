@@ -1,6 +1,7 @@
 body {
 
     text-decoration: none;
+    background : rgb(214, 237, 230);
 }
 
 .login-page {
@@ -28,3 +29,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+
+
+
