@@ -1,60 +1,68 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div class="login-page bg-light">
-  <div class="container">
+  <div class="login-page bg-light">
+    <div class="container">
       <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <h3 class="mb-3">Login Now</h3>
-              <div class="bg-white shadow rounded">
-                  <div class="row">
-                      <div class="col-md-7 pe-0">
-                          <div class="form-left h-100 py-5 px-5">
-                              <form name="formPainel" id="formPainel" method="post" action="/dologin/" class="row g-4">
-                                      <div class="col-12">
-                                        {% if msg %}
-                                          <div class="alert {{ class }}">{{ msg }}</div>
-                                        {% endif %}
-                
-                                        {% csrf_token %}
-                                          <label>Username<span class="text-danger">*</span></label>
-                                          <div class="input-group">
-                                              <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                              <input type="text" class="form-control" name="user" id="name" placeholder="Nome de usuário" />
-                                          </div>
-                                      </div>
+        <div class="col-lg-10 offset-lg-1">
+          <h3 class="mb-3">Entre</h3>
+          <div class="bg-white shadow rounded">
+            <div class="row">
+              <div class="col-md-7 pe-0">
+                <div class="form-left h-100 py-5 px-5">
+                  <form name="formPainel" id="formPainel" method="post" action="/dologin/" class="row g-4">
+                    <div class="col-12">
+                      {% if msg %}
+                        <div class="alert {{ class }}">{{ msg }}</div>
+                      {% endif %}
 
-                                      <div class="col-12">
-                                          <label>Password<span class="text-danger">*</span></label>
-                                          <div class="input-group">
-                                              <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                              <input type="password" class="form-control" name="password" id="password" placeholder="Senha" />
-                                          </div>
-                                      </div>
-
-
-                                      <div class="col-sm-12">
-                                          <a href="/create/" class="float-end text-primary">Cadastrar</a>
-                                      </div>
-
-                                      <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mt-4 px-4 float-end mt-4" value="Entrar">Entrar</button>
-                                      </div>
-                              </form>
-                          </div>
+                      {% csrf_token %}
+                      <label>Usuário<span class="text-danger">*</span></label>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <i class="bi bi-person-fill"></i>
+                        </div>
+                        <input type="text" class="form-control" name="user" id="name" placeholder="Nome de usuário" />
                       </div>
-                      <div class="col-md-5 ps-0 d-none d-md-block">
-                          <div class="form-right h-100 bg-primary text-white text-center pt-5">
-                              <i class="bi bi-bootstrap"></i>
-                              <h2 class="fs-1">Welcome Back!!!</h2>
-                          </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label>Senha<span class="text-danger">*</span></label>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <i class="bi bi-lock-fill"></i>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Senha" />
                       </div>
-                  </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck" />
+                        <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <a href="/create/" class="float-end text-primary">Não sou cadastrado</a>
+                    </div>
+
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-success px-4 float-end mt-4">Entrar</button>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <p class="text-end text-secondary mt-3">Bootstrap 5 Login Page Design</p>
+              <div class="col-md-5 ps-0 align-img-center">
+                <img class="img-dog mt-3"  src="https://i.pinimg.com/564x/83/b5/d6/83b5d65ba9071f89ced227a50e7ebe99.jpg" />
+                <i class="#"></i>
+                <h2 class="text-center fs-8">Bem vindo</h2>
+                <h2 class="text-center mb-3 fs-10">IPTU Pet Friendly</h2>
+              </div>
+            </div>
           </div>
+        </div>
+        <p class="text-end text-secondary mt-3">Projeto DB1 START - Sheila Inácio</p>
       </div>
+    </div>
   </div>
-</div>
-
 {% endblock %}

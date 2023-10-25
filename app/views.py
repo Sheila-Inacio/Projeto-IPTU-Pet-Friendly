@@ -3,13 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 
-# # Create your views here.
-# def home(request):
-#     return render(request, 'home.html')
-
 # Formulário de cadastro de usuários:
-
-
 def create(request):
     return render(request, 'create.html')
 
@@ -32,8 +26,6 @@ def store(request):
     return render(request, 'create.html', data)
 
 # Formulário do painel de login:
-
-
 def painel(request):
     return render(request, 'painel.html')
 
@@ -61,8 +53,6 @@ def logouts(request):
     return redirect('/painel/')
 
 # Alterar a senha:
-
-
 def changePassword(request):
     user = User.objects.get(email=request.user.email)
     user.set_password()
