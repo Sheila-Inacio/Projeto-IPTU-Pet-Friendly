@@ -3,113 +3,61 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="container">
-    <h1>Cadastrar contribuinte</h1>
-    <form>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer01">Primeiro nome:</label>
-            <input type="text" class="form-control" id="validationServer01" placeholder="Nome" required />
-          </div>
-        </div>
+  <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <h1>Pagina de contribuintes</h1>
+  </div>
 
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer02">Sobrenome:</label>
-            <input type="text" class="form-control" id="validationServer02" placeholder="Sobrenome" required />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer01">E-mail:</label>
-            <input type="text" class="form-control" id="validationServer01" placeholder="E-mail" required />
-          </div>
-        </div>
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <a href="/forms_usuario" class="btn btn-success">Adicionar</a>
+  </div>
 
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer02">Telefone:</label>
-            <input type="number" class="form-control" id="validationServer02" placeholder="Telefone" required />
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-8 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Endereço:</label>
-            <input type="text" class="form-control" id="validationServer03" placeholder="Logradouro" required />
-          </div>
-        </div>
-
-        <div class="col-md-2 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Complemento:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Numero" required />
-          </div>
-        </div>
-        <div class="col-md-2 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Numero:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Numero" required />
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Bairro:</label>
-            <input type="text" class="form-control" id="validationServer03" placeholder="Bairro" required />
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Cidade:</label>
-            <input type="text" class="form-control" id="validationServer04" placeholder="Cidade" required />
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Estado:</label>
-            <input type="text" class="form-control" id="validationServer04" placeholder="Estado" required />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Inscrição Municipal:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Inscrição Municipal" required />
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Indicação fiscal:</label>
-            <input type="number" class="form-control" id="validationServer04" placeholder="Indicação Fiscal" required />
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">CPF:</label>
-            <input type="number" class="form-control" id="validationServer04" placeholder="CPF" required />
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required />
-          <label class="form-check-label" for="invalidCheck3">Concordo com os termos e condições</label>
-          <div class="invalid-feedback">Você deve concordar, antes de continuar.</div>
-        </div>
-      </div>
-      <a href="/dashboard/" class="btn btn-secondary mt-4" type="back">Voltar</a>
-      <input class="btn btn-success mt-4 float-end" type="submit" value="Cadastrar" />
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <form method="get">
+      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
     </form>
   </div>
+
+  <div class="col-8 m-auto pt-4 pb-2 text-center">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nome completo</th>
+          <th scope="col">CPF</th>
+          <th scope="='col">Telefone</th>
+          <th scope="col">Inscrição_municipal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dbs in db %}
+          <tr>
+            <th>{{ dbs.nome_completo }}</th>
+            <th>{{ dbs.cpf }}</th>
+            <th>{{ dbs.telefone }}</th>
+            <th>{{ dbs.inscricao_municipal }}</th>
+            <th>{{ dbs.id }}</th>
+            <td>
+              <a href="/view/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
+              <a href="/edit/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
+              <a href="/delete/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    {% if db.has_previous %}
+      <a href="?page={{ db.previous_page_number }}"><</a>
+    {% endif %}
+
+    {{ db.number }}
+
+    {% if db.has_next %}
+      <a href="?page={{ db.next_page_number }}">></a>
+    {% endif %}
+  </div>
+
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}

@@ -16,21 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import painel, create, store, dologin, dashboard, logouts, changePassword, usuario, pets, relatorio
+from app.views import painel, create, store, dologin, dashboard, logouts, changePassword, usuario, forms_usuario,cadastrar_contribuinte, pets, relatorio, view, edit, update_contribuinte, delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', painel),
-    path('create/', create),
-    path('store/', store),
-    path('dologin/', dologin),
-    path('painel/', painel),
-    path('dashboard/', dashboard),
-    path('logouts/', logouts),
-    path('password/', changePassword),
-    path('usuario/', usuario),
-    path('pets/', pets),
-    path('relatorio/', relatorio),
+    path('', painel, name="painel"),
+    path('create/', create, name="create"),
+    path('store/', store, name="store"),
+    path('dologin/', dologin, name="dologin"),
+    path('painel/', painel, name="painel"),
+    path('dashboard/', dashboard, name="dashboard"),
+    path('logouts/', logouts, name="logouts"),
+    path('password/', changePassword, name="password"),
+    path('usuario/', usuario, name="usuario"),
+    path('forms_usuario/', forms_usuario, name="forms_usuario"),
+    path('cadastrar_contribuinte/', cadastrar_contribuinte, name="cadastrar_contribuinte"),
+    path('pets/', pets, name="pets"),
+    path('relatorio/', relatorio, name="relatorio"),
+    path('view/<int:pk>/', view, name="view"),
+    path('edit/<int:pk>/', edit, name="edit"),
+    path('update_contruibuinte/<int:pk>/', update_contribuinte, name="update_contribuinte"),
+    path('delete/<int:pk>/', delete, name="delete"),
     
     
 ]
