@@ -8,7 +8,7 @@
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/forms_usuario" class="btn btn-success">Adicionar</a>
+    <a href="/cadastrarContribuinte/" class="btn btn-success">Adicionar</a>
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
@@ -25,16 +25,17 @@
           <th scope="col">CPF</th>
           <th scope="='col">Telefone</th>
           <th scope="col">Inscrição_municipal</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
         {% for dbs in db %}
           <tr>
-            <th>{{ dbs.nome_completo }}</th>
-            <th>{{ dbs.cpf }}</th>
-            <th>{{ dbs.telefone }}</th>
-            <th>{{ dbs.inscricao_municipal }}</th>
             <th>{{ dbs.id }}</th>
+            <td>{{ dbs.nome_completo }}</td>
+            <td>{{ dbs.cpf }}</td>
+            <td>{{ dbs.telefone }}</td>
+            <td>{{ dbs.inscricao_municipal }}</td>
             <td>
               <a href="/view/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
               <a href="/edit/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
