@@ -62,6 +62,10 @@ def dashboard(request):
 # Pagina usuário:
 
 
+
+
+# PAGINA DE CONTRIBUINTES:
+
 def contribuintes(request):
     data = {}
     search = request.GET.get('search')
@@ -71,29 +75,18 @@ def contribuintes(request):
         data['db'] = Contribuinte.objects.all()
     return render(request, 'contribuintes.html', data)
 
-# Formulário usuário:
-
-
-def form(request):
+def cadastrarContribuinte(request):
     data = {}
     data['form'] = ContriForm()
     return render(request, 'cadastrarContribuinte.html', data)
 
-
-def cadastrarContribuinte(request):
-    return render(request, 'cadastrarContribuinte.html')
-
-
-def update_contribuinte(request, pk):
-    data = {}
-    data['db'] = Contribuinte.objects.get(pk=pk)
-    form = ContriForm(request.POST or None, instance=data['db'])
+def createContribuinte(request):
+    form = ContriForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('contribuinte')
+        return redirect('/contribuintes/')
 
-
-# Create your views here.
+# PAGINA DE PETS:
 def listarCarros(request):
     data = {}
     search = request.GET.get('search')
@@ -101,20 +94,13 @@ def listarCarros(request):
         data['db'] = Carros.objects.filter(modelo__icontains=search)
     else:
         data['db'] = Carros.objects.all()
-
-    # all = Carros.objects.all()
-    # paginator = Paginator(all, 2)
-    # pages = request.GET.get('page')
-    # data['db'] = paginator.get_page(pages)
     return render(request, 'listarCarros.html', data)
 
 #Cadastrar carros:
-
 def cadastrarCarros(request):
     data = {}
     data['form'] = CarrosForm()
     return render(request, 'cadastrarCarros.html', data)
-
 
 def createCarros(request):
     form = CarrosForm(request.POST or None)

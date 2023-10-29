@@ -5,96 +5,23 @@
 
   <div class="container">
     <h1>Cadastrar contribuinte</h1>
-    <form name="form" id="formsContribuinte" action="{% if db %}{{ db.id }}{% endif %}" method="post">
+    <form name="form" id="form" action="{% if db%}/updateContribuinte/{{db.id}}/{%else%}/createContribuinte/{% endif %}" method="post">
       {% csrf_token %}
 
-      <div class="row">
-        <div class="col-md-8 mb-3">
-          <div class="form-group">
-            <label for="validationServer01">Nome completo:</label>
-            <input type="text" class="form-control" id="validationServer01" placeholder="Nome" required />
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer02">CPF:</label>
-            <input type="number" class="form-control" id="validationServer02" placeholder="CPF" required />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer01">E-mail:</label>
-            <input type="text" class="form-control" id="validationServer01" placeholder="E-mail" required />
-          </div>
-        </div>
+      <div class="form-group mt-4">Nome completo: {{ form.nome_completo }}</div>
+      <div class="form-group mt-4">CPF: {{ form.cpf }}</div>
+      <div class="form-group mt-4">E-mail: {{ form.email }}</div>
+      <div class="form-group mt-4">Telefone: {{ form.telefone}}</div>
+      <div class="form-group mt-4">Endereço: {{ form.endereco }}</div>
+      <div class="form-group mt-4">Numero: {{ form.numero }}</div>
+      <div class="form-group mt-4">Complemento: {{ form.complemento}}</div>
+      <div class="form-group mt-4">Bairro: {{ form.bairro }}</div>
+      <div class="form-group mt-4">Cidade: {{ form.cidade }}</div>
+      <div class="form-group mt-4">Estado: {{ form.estado}}</div>
+      <div class="form-group mt-4">Inscrição municipal: {{ form.inscricao_municipal }}</div>
+      <div class="form-group mt-4">Indicação fiscal: {{ form.indicacao_fiscal }}</div>
 
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer02">Telefone:</label>
-            <input type="number" class="form-control" id="validationServer02" placeholder="Telefone" required />
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-8 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Endereço:</label>
-            <input type="text" class="form-control" id="validationServer03" placeholder="Logradouro" required />
-          </div>
-        </div>
-
-        <div class="col-md-2 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Numero:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Numero" required />
-          </div>
-        </div>
-        <div class="col-md-2 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Complemento:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Numero" required />
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Bairro:</label>
-            <input type="text" class="form-control" id="validationServer03" placeholder="Bairro" required />
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Cidade:</label>
-            <input type="text" class="form-control" id="validationServer04" placeholder="Cidade" required />
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Estado:</label>
-            <input type="text" class="form-control" id="validationServer04" placeholder="Estado" required />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer03">Inscrição Municipal:</label>
-            <input type="number" class="form-control" id="validationServer03" placeholder="Inscrição Municipal" required />
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <div class="form-group">
-            <label for="validationServer04">Indicação fiscal:</label>
-            <input type="number" class="form-control" id="validationServer04" placeholder="Indicação Fiscal" required />
-          </div>
-        </div>
-      </div>
+      
       <a href="/contribuintes/" class="btn btn-secondary mt-4" type="back">Voltar</a>
       <div class="col-8 m-auto pt-4 pb-2 text-center">
         <div id="result"></div>
@@ -102,4 +29,7 @@
       </div>
     </form>
   </div>
+
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}
