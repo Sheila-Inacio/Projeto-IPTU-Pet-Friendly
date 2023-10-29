@@ -7,7 +7,7 @@
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/cadastrarCarros" class="btn btn-success">Adicionar</a>
+    <a href="/cadastrarCarros/" class="btn btn-success">Adicionar</a>
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
@@ -33,10 +33,11 @@
             <th>{{ dbs.modelo }}</th>
             <td>{{ dbs.marca }}</td>
             <td>{{ dbs.ano }}</td>
+
             <td>
-              <a href="/view/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
-              <a href="/edit/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
-              <a href="/delete/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
+              <a href="/viewCarros/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
+              <a href="/editCarros/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
+              <a href="/deleteCarros/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
             </td>
           </tr>
         {% endfor %}

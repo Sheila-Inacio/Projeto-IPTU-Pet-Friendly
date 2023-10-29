@@ -1,6 +1,5 @@
 (function (win, doc) {
-    "use strict";
-
+    'use strict';
 
     //  VERIFICA SE O USUÁRIO QUER MESMO DELETAR O DADO   
 
@@ -46,6 +45,3 @@
     }
 
 })(window, document);
-
-
-
