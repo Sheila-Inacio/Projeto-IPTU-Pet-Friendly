@@ -16,3 +16,10 @@ class Contribuinte(models.Model):
     estado = models.CharField(max_length=50)
     inscricao_municipal = models.CharField(max_length=50)
     indicacao_fiscal = models.CharField(max_length=50)
+
+
+
+class Carros(models.Model):
+    modelo = models.CharField(max_length=150)
+    marca = models.CharField(max_length=100)
+    ano = models.IntegerField()

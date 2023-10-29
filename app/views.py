@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from app.forms import ContriForm
 from app.models import Contribuinte
+from app.models import Carros
+
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -10,6 +12,8 @@ def create(request):
     return render(request, 'create.html')
 
 # Inserção dos dados dos usuários:
+
+
 def store(request):
     data = {}
     if (request.POST['password'] != request.POST['password-conf']):
@@ -27,6 +31,8 @@ def store(request):
     return render(request, 'create.html', data)
 
 # Formulário do painel de login:
+
+
 def painel(request):
     return render(request, 'painel.html')
 
@@ -39,7 +45,6 @@ def dologin(request):
     if user is not None:
         login(request, user)
         return redirect('dashboard')
-    
     else:
         data['msg'] = 'Usuário ou senha inválidos!'
         data['class'] = 'alert-danger'
@@ -67,13 +72,16 @@ def contribuintes(request):
 
 # Formulário usuário:
 
+
 def form(request):
     data = {}
     data['form'] = ContriForm()
     return render(request, 'cadastrarContribuinte.html', data)
 
+
 def cadastrarContribuinte(request):
     return render(request, 'cadastrarContribuinte.html')
+
 
 def update_contribuinte(request, pk):
     data = {}
@@ -84,15 +92,36 @@ def update_contribuinte(request, pk):
         return redirect('contribuinte')
 
 
+# Create your views here.
+def listarCarros(request):
+    data = {}
+    search = request.GET.get('search')
+    if search:
+        data['db'] = Carros.objects.filter(modelo__icontains=search)
+    else:
+        data['db'] = Carros.objects.all()
+
+    # all = Carros.objects.all()
+    # paginator = Paginator(all, 2)
+    # pages = request.GET.get('page')
+    # data['db'] = paginator.get_page(pages)
+    return render(request, 'listarCarros.html', data)
+
+
 # Formulário pets:
 def pets(request):
     return render(request, 'pets.html')
 
+
 # Relatório de todos os cadastros:
+
+
 def relatorio(request):
     return render(request, 'relatorio.html')
 
 # Logout do sistema:
+
+
 def logouts(request):
     logout(request)
     return redirect('/painel/')
