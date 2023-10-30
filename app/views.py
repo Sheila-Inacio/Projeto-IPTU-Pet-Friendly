@@ -140,7 +140,7 @@ def editCarros(request, pk):
     data = {}
     data['db'] = Carros.objects.get(pk=pk)
     data['form'] = CarrosForm(instance=data['db'])
-    return render(request, '/cadastrarCarros.html/', data)
+    return render(request, 'cadastrarCarros.html', data)
 
 def updateCarros(request, pk):
     data = {}
