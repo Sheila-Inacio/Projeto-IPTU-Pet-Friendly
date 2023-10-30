@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, listarCarros, cadastrarCarros, createCarros, viewCarros, editCarros, updateCarros, deleteCarros, relatorio
+from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, viewContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, listarCarros, cadastrarCarros, createCarros, viewCarros, editCarros, updateCarros, deleteCarros, relatorio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,10 +28,12 @@ urlpatterns = [
     path('dashboard/', dashboard, name="dashboard"),
     path('logouts/', logouts, name="logouts"),
     path('contribuintes/', contribuintes, name="contribuintes"),
-    path('cadastrarContribuinte/', cadastrarContribuinte,
-         name="cadastrarContribuinte"),
-    path('createContribuinte/', createContribuinte,
-         name="createContribuinte"),
+    path('cadastrarContribuinte/', cadastrarContribuinte, name="cadastrarContribuinte"),
+    path('createContribuinte/', createContribuinte, name="createContribuinte"),
+    path('viewContribuinte/<int:pk>/', viewContribuinte, name='viewContribuinte'),
+    path('editContribuinte/<int:pk>/', editContribuinte, name='editContribuinte'),
+    path('updateContribuinte/<int:pk>/', updateContribuinte, name='updateContribuinte'),
+    path('deleteContribuinte/<int:pk>/', deleteContribuinte, name='deleteContribuinte'),
     path('listarCarros/', listarCarros, name="listarCarros"),
     path('cadastrarCarros/', cadastrarCarros, name="cadastrarCarros"),
     path('createCarros/', createCarros, name="createCarros"),

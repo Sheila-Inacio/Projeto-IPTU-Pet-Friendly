@@ -85,6 +85,30 @@ def createContribuinte(request):
     if form.is_valid():
         form.save()
         return redirect('/contribuintes/')
+    
+def viewContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    return render(request, 'viewContribuinte.html', data)
+
+def editContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    data['form'] = ContriForm(instance=data['db'])
+    return render(request, 'cadastrarContribuinte.html', data)
+
+def updateContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    form = ContriForm(request.POST or None, instance=data['db'])
+    if form.is_valid():
+        form.save()
+        return redirect('/contribuintes/')
+
+def deleteContribuinte(request, pk):
+    db = Contribuinte.objects.get(pk=pk)
+    db.delete()
+    return redirect('contribuintes')
 
 # PAGINA DE PETS:
 def listarCarros(request):
@@ -96,7 +120,6 @@ def listarCarros(request):
         data['db'] = Carros.objects.all()
     return render(request, 'listarCarros.html', data)
 
-#Cadastrar carros:
 def cadastrarCarros(request):
     data = {}
     data['form'] = CarrosForm()
@@ -106,18 +129,18 @@ def createCarros(request):
     form = CarrosForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('/listarCarros/')
+        return redirect('listarCarros')
 
 def viewCarros(request, pk):
     data = {}
     data['db'] = Carros.objects.get(pk=pk)
-    return render(request, 'viewCarros.html', data)
+    return render(request, 'viewContribuinte.html', data)
 
 def editCarros(request, pk):
     data = {}
     data['db'] = Carros.objects.get(pk=pk)
     data['form'] = CarrosForm(instance=data['db'])
-    return render(request, 'cadastrarCarros.html', data)
+    return render(request, '/cadastrarCarros.html/', data)
 
 def updateCarros(request, pk):
     data = {}
