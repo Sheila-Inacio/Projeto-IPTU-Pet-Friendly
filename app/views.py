@@ -74,24 +74,41 @@ def contribuintes(request):
 # Formulário usuário:
 
 
-def form(request):
+def cadastrarContribuinte(request):
     data = {}
     data['form'] = ContriForm()
+    data['form'] = ()
     return render(request, 'cadastrarContribuinte.html', data)
 
+def createContribuinte(request):
+    form = ContriForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/contribuintes/')
+    
+def viewContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    return render(request, 'viewContribuinte.html', data)
 
-def cadastrarContribuinte(request):
-    return render(request, 'cadastrarContribuinte.html')
-
-
-def update_contribuinte(request, pk):
+def editContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    data['form'] = ContriForm(instance=data['db'])
+    return render(request, 'cadastrarContribuinte.html', data)
+    
+def updateContribuinte(request, pk):
     data = {}
     data['db'] = Contribuinte.objects.get(pk=pk)
     form = ContriForm(request.POST or None, instance=data['db'])
     if form.is_valid():
         form.save()
-        return redirect('contribuinte')
-
+        return redirect('/contribuintes/')
+    
+def deleteContribuinte(request, pk):
+    db = Contribuinte.objects.get(pk=pk)
+    db.delete()
+    return redirect('contribuintes')
 
 # Create your views here.
 def listarCarros(request):
@@ -101,20 +118,12 @@ def listarCarros(request):
         data['db'] = Carros.objects.filter(modelo__icontains=search)
     else:
         data['db'] = Carros.objects.all()
-
-    # all = Carros.objects.all()
-    # paginator = Paginator(all, 2)
-    # pages = request.GET.get('page')
-    # data['db'] = paginator.get_page(pages)
     return render(request, 'listarCarros.html', data)
-
-#Cadastrar carros:
 
 def cadastrarCarros(request):
     data = {}
     data['form'] = CarrosForm()
     return render(request, 'cadastrarCarros.html', data)
-
 
 def createCarros(request):
     form = CarrosForm(request.POST or None)

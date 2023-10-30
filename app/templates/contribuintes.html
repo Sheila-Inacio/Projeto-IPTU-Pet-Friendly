@@ -8,7 +8,7 @@
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/cadastrarContribuinte/" class="btn btn-success">Adicionar</a>
+    <a href="/cadastrarContribuinte/" class="btn btn-success">Novo cadastro</a>
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
@@ -36,9 +36,9 @@
             <td>{{ dbs.telefone }}</td>
             <td>{{ dbs.inscricao_municipal }}</td>
             <td>
-              <a href="/view/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
-              <a href="/edit/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
-              <a href="/delete/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
+              <a href="/viewContribuinte/{{ dbs.id }}/" class="btn btn-secondary">Visualizar</a>
+              <a href="/editContribuinte/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
+              <a href="/deleteContribuinte/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
             </td>
           </tr>
         {% endfor %}

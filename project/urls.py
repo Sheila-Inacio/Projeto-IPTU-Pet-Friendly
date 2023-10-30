@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, form, listarCarros, cadastrarCarros, createCarros, viewCarros, editCarros, updateCarros, deleteCarros, relatorio, update_contribuinte
+from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, listarCarros, cadastrarCarros, createCarros, viewContribuinte, viewCarros, editCarros, updateCarros, deleteCarros, relatorio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,17 +30,20 @@ urlpatterns = [
     path('contribuintes/', contribuintes, name="contribuintes"),
     path('cadastrarContribuinte/', cadastrarContribuinte,
          name="cadastrarContribuinte"),
-    path('form/', form, name="form"),
-    path('listarCarros/', listarCarros, name="listarCarros"),
+    path('createContribuinte/', createContribuinte, name="createContribuinte"),
+        path('listarCarros/', listarCarros, name="listarCarros"),
     path('cadastrarCarros/', cadastrarCarros, name="cadastrarCarros"),
     path('createCarros/', createCarros, name="createCarros"),
+    path('viewContribuinte/<int:pk>/', viewContribuinte, name='viewContribuinte'),
+    path('editContribuinte/<int:pk>/', editContribuinte, name='editContribuinte'),
+    path('updateContribuinte/<int:pk>/', updateContribuinte, name='updateContribuinte'),
+    path('deleteContribuinte/<int:pk>/', deleteContribuinte, name='deleteContribuinte'),
     path('viewCarros/<int:pk>/', viewCarros, name='viewCarros'),
     path('editCarros/<int:pk>/', editCarros, name='editCarros'),
     path('updateCarros/<int:pk>/', updateCarros, name='updateCarros'),
 	path('deleteCarros/<int:pk>/', deleteCarros, name='deleteCarros'),
     path('relatorio/', relatorio, name="relatorio"),
-    path('update_contruibuinte/<int:pk>/',
-         update_contribuinte, name="update_contribuinte"),
+
 
 
 
