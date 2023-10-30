@@ -18,8 +18,16 @@ class Contribuinte(models.Model):
     indicacao_fiscal = models.CharField(max_length=50)
 
 
-
 class Carros(models.Model):
     modelo = models.CharField(max_length=150)
     marca = models.CharField(max_length=100)
     ano = models.IntegerField()
+
+
+class Pets(models.Model):
+    nome = models.CharField(max_length=150)
+    raca = models.CharField(max_length=100)
+    idade = models.CharField(max_length=100)
+    tamanho = models.IntegerField(max_length=100)
+    contribuinte = models.IntegerField(max_length=100)
+    numero_identificacao = models.IntegerField(max_length=100)

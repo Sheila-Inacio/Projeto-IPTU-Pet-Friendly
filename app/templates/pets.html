@@ -1,10 +1,68 @@
-{% extends "main.html" %}
+{% extends 'main.html' %}
 
 {% block content %}
-   
-    {% include "menu.html" %}
-    
-        <h1>ÁREA DE PETS</h1>
+  {% include 'menu.html' %}
 
+  <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <h1>Pagina de pets</h1>
+  </div>
 
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <a href="/cadastrarPets/" class="btn btn-success">Novo cadastro</a>
+  </div>
+
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <form method="get">
+      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
+    </form>
+  </div>
+
+  <div class="col-8 m-auto pt-4 pb-2 text-center">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nome </th>
+          <th scope="col">Raça</th>
+          <th scope="='col">Idade</th>
+          <th scope="col">Tamanho</th>
+          <th scope="col">Contribuinte</th>
+          <th scope="col">Numero identificação</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dbs in db %}
+          <tr>
+            <td>{{ dbs.nome }}</td>
+            <td>{{ dbs.raca }}</td>
+            <td>{{ dbs.idade }}</td>
+            <td>{{ dbs.tamanho }}</td>
+            <td>{{ dbs.contribuinte }}</td>
+            <td>{{ dbs.numero_identificacao }}</td>
+            
+            <td>
+              <a href="/viewPets/{{ dbs.id }}/" class="btn btn-secondary">Visualizar</a>
+              <a href="/editPets/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
+              <a href="/deletePets/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    {% if db.has_previous %}
+      <a href="?page={{ db.previous_page_number }}"><</a>
+    {% endif %}
+
+    {{ db.number }}
+
+    {% if db.has_next %}
+      <a href="?page={{ db.next_page_number }}">></a>
+    {% endif %}
+  </div>
+
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}
