@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from app.forms import ContriForm
-from app.forms import CarrosForm
 from app.forms import PetsForm
 from app.models import Contribuinte
-from app.models import Carros
 from app.models import Pets
 
 from django.contrib.auth import authenticate, login, logout
@@ -79,7 +77,6 @@ def contribuintes(request):
 def cadastrarContribuinte(request):
     data = {}
     data['form'] = ContriForm()
-    data['form'] = ()
     return render(request, 'cadastrarContribuinte.html', data)
 
 
@@ -116,59 +113,6 @@ def deleteContribuinte(request, pk):
     db = Contribuinte.objects.get(pk=pk)
     db.delete()
     return redirect('contribuintes')
-
-# Create your views here.
-
-
-def listarCarros(request):
-    data = {}
-    search = request.GET.get('search')
-    if search:
-        data['db'] = Carros.objects.filter(modelo__icontains=search)
-    else:
-        data['db'] = Carros.objects.all()
-    return render(request, 'listarCarros.html', data)
-
-
-def cadastrarCarros(request):
-    data = {}
-    data['form'] = CarrosForm()
-    return render(request, 'cadastrarCarros.html', data)
-
-
-def createCarros(request):
-    form = CarrosForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('/listarCarros/')
-
-
-def viewCarros(request, pk):
-    data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    return render(request, 'viewCarros.html', data)
-
-
-def editCarros(request, pk):
-    data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    data['form'] = CarrosForm(instance=data['db'])
-    return render(request, 'cadastrarCarros.html', data)
-
-
-def updateCarros(request, pk):
-    data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    form = CarrosForm(request.POST or None, instance=data['db'])
-    if form.is_valid():
-        form.save()
-        return redirect('/listarCarros/')
-
-
-def deleteCarros(request, pk):
-    db = Carros.objects.get(pk=pk)
-    db.delete()
-    return redirect('listarCarros')
 
 
 #Cadastro dos pets:

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, viewContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, listarCarros, cadastrarCarros, createCarros, viewCarros, editCarros, updateCarros, deleteCarros, pets, cadastrarPets, createPets, viewPets, editPets, updatePets, deletePets,  relatorio
+from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, viewContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, pets, cadastrarPets, createPets, viewPets, editPets, updatePets, deletePets,  relatorio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,13 +37,6 @@ urlpatterns = [
          updateContribuinte, name='updateContribuinte'),
     path('deleteContribuinte/<int:pk>/',
          deleteContribuinte, name='deleteContribuinte'),
-    path('listarCarros/', listarCarros, name="listarCarros"),
-    path('cadastrarCarros/', cadastrarCarros, name="cadastrarCarros"),
-    path('createCarros/', createCarros, name="createCarros"),
-    path('viewCarros/<int:pk>/', viewCarros, name='viewCarros'),
-    path('editCarros/<int:pk>/', editCarros, name='editCarros'),
-    path('updateCarros/<int:pk>/', updateCarros, name='updateCarros'),
-    path('deleteCarros/<int:pk>/', deleteCarros, name='deleteCarros'),
     path('pets/', pets, name="pets"),
     path('cadastrarPets/', cadastrarPets, name="cadastrarPets"),
     path('createPets/', createPets, name="createPets"),
