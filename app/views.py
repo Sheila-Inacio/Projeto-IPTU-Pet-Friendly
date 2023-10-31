@@ -66,7 +66,7 @@ def contribuintes(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Contribuinte.objects.filter(modelo__icontains=search)
+        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search)
     else:
         data['db'] = Contribuinte.objects.all()
     return render(request, 'contribuintes.html', data)
@@ -121,7 +121,7 @@ def pets(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Pets.objects.filter(modelo__icontains=search)
+        data['db'] = Pets.objects.filter(nome__icontains=search)
     else:
         data['db'] = Pets.objects.all()
     return render(request, 'pets.html', data)
