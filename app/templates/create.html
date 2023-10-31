@@ -13,22 +13,17 @@
                     {{msg}}
                 </div>
             {% endif %}
-
             {% csrf_token %}
-
-            <input class="form-control mt-4" type="text" name="name" id=name placeholder="Nome">
-            <input class="form-control mt-4" type="text" name="user" id=name placeholder="Nome de Usuário">
+            <input class="form-control mt-4" type="text" name="name" id=name placeholder="Nome de usuário">
             <input class="form-control mt-4" type="password" name="password" id="password" placeholder="Senha">
             <input class="form-control mt-4" type="password" name="password-conf" id="password-conf" placeholder="Repita a Senha">
             <input class="form-control mt-4" type="email" name="email" id="email" placeholder="Email">
-            <a href="/painel/" class="btn btn-secondary mt-4 " type="back">
-                Voltar
-            </a> 
-            <input class="btn btn-success mt-4 float-end" type="submit" value="Cadastrar">
-            
-        
-        
-        
+
+            <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center">
+                <div id="result"></div>
+                <a href="/painel/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
+                <input class="btn btn-success mt-4 float-end ms-2 tamanho-95" type="submit" value="Cadastrar" />
+            </div>                       
         </div>
     </form>
 

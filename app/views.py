@@ -12,15 +12,11 @@ from django.contrib.auth import authenticate, login, logout
 def create(request):
     return render(request, 'create.html')
 
-# Inserção dos dados dos usuários:
-
-
 def store(request):
     data = {}
     if (request.POST['password'] != request.POST['password-conf']):
         data['msg'] = 'Senha e confirmação de senha diferentes!'
         data['class'] = 'alert-danger'
-
     else:
         user = User.objects.create_user(
             request.POST['name'], request.POST['email'], request.POST['password'])
@@ -28,15 +24,11 @@ def store(request):
         user.save()
         data['msg'] = 'Usuário cadastrado com sucesso.'
         data['class'] = 'alert-success'
-
     return render(request, 'create.html', data)
-
-# Formulário do painel de login:
 
 
 def painel(request):
     return render(request, 'painel.html')
-
 
 # Formulário do login:
 def dologin(request):

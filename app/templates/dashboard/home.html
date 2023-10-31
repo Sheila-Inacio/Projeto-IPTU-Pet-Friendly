@@ -1,8 +1,15 @@
 {% extends 'main.html' %}
 
 {% block content %}
-  {% include "menu.html" %}
-  
+  {% if request.user.is_authenticated %}
 
+    {% include "menu.html" %}
+ 
+    {% if perms.admin.can_edit_users %}
+      <p>Como você tem permissão de editar usuários pode ver isso.</p>
+    {% endif %}
+  {% else %}
+    Você não tem acesso a essa área!
+  {% endif %}
 
 {% endblock %}
