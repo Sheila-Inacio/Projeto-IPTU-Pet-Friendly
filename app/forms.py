@@ -19,3 +19,5 @@ class PetsForm(ModelForm):
         model = Pets
         fields = ['nome', 'raca', 'idade', 'tamanho',
                   'contribuinte', 'numero_identificacao']
+        
+

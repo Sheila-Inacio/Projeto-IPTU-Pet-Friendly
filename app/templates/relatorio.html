@@ -1,10 +1,53 @@
-{% extends "main.html" %}
+{% extends 'main.html' %}
 
 {% block content %}
-   
-      {% include "menu.html" %}
-     
-             <h1>RELATÓRIOS</h1>
-    
+  {% include 'menu.html' %}
 
+  <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <h1>Relatório</h1>
+  </div>
+  <div class="col-10 m-auto pt-3 pb-2 text-center">
+    <form method="get">
+      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
+    </form>
+  </div>
+
+  <div class="col-10 m-auto pt-4 pb-2 text-left">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Contribuinte</th>
+          <th scope="='col">Inscrição Municipal</th>
+             <th scope="='col">Endereço</th>
+          <th scope="col">Valor desconto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dbs in db %}
+          <tr>
+            <td>{{ dbs.nome_completo }}</td>
+            <td>{{ dbs.inscricao_municipal }}</td>
+            <td>{{ dbs.endereco }}</td>
+            <td>{{ dbs.numero_identificacao }}</td>
+            <td>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    {% if db.has_previous %}
+      <a href="?page={{ db.previous_page_number }}"><</a>
+    {% endif %}
+
+    {{ db.number }}
+
+    {% if db.has_next %}
+      <a href="?page={{ db.next_page_number }}">></a>
+    {% endif %}
+  </div>
+
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}

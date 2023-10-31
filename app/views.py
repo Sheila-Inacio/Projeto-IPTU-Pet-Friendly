@@ -167,7 +167,13 @@ def deletePets(request, pk):
 
 
 def relatorio(request):
-    return render(request, 'relatorio.html')
+    data = {}
+    search = request.GET.get('search')
+    if search:
+        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search)
+    else:
+        data['db'] = Contribuinte.objects.all()
+    return render(request, 'relatorio.html', data)
 
 # Logout do sistema:
 

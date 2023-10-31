@@ -1,31 +1,68 @@
 {% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
   {% include 'menu.html' %}
-
-  <div class="container">
-    <h1>Cadastrar contribuinte</h1>
-    <form name="form" id="form" action="{% if db%}/updateContribuinte/{{db.id}}/{%else%}/createContribuinte/{% endif %}" method="post">
+  <br>
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-center">Cadastro de pets:</h2>
+      <div class="card-body">
+        <form name="form" id="form" action="{% if db%}/updateContribuinte/{{db.id}}/{%else%}/createContribuinte/{% endif %}" method="post">
       {% csrf_token %}
-      
-      <div class="form-group mt-4">Nome completo: {{ form.nome_completo }}</div>
-      <div class="form-group mt-4">CPF: {{ form.cpf }}</div>
-      <div class="form-group mt-4">E-mail: {{ form.email }}</div>
-      <div class="form-group mt-4">Telefone: {{ form.telefone}}</div>
-      <div class="form-group mt-4">Endereço: {{ form.endereco }}</div>
-      <div class="form-group mt-4">Numero: {{ form.numero }}</div>
-      <div class="form-group mt-4">Complemento: {{ form.complemento}}</div>
-      <div class="form-group mt-4">Bairro: {{ form.bairro }}</div>
-      <div class="form-group mt-4">Cidade: {{ form.cidade }}</div>
-      <div class="form-group mt-4">Estado: {{ form.estado}}</div>
-      <div class="form-group mt-4">Inscrição municipal: {{ form.inscricao_municipal }}</div>
-      <div class="form-group mt-4">Indicação fiscal: {{ form.indicacao_fiscal }}</div>
+      <div class="row">
+        <div class="col-md-6">
+        {{form.nome_completo|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+        {{form.cpf|as_crispy_field}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+        {{form.email|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+        {{form.telefone|as_crispy_field}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+        {{form.endereco|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+        {{form.numero|as_crispy_field}}
+        </div>
+        <div class="col-md-2">
+          {{form.complemento|as_crispy_field}}
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        {{form.bairro|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+        {{form.cidade|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+          {{form.estado|as_crispy_field}}
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        {{form.inscricao_municipal|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+        {{form.indicacao_fiscal|as_crispy_field}}
+        </div>
+      </div>
 
       
-      <a href="/contribuintes/" class="btn btn-secondary mt-4" type="back">Voltar</a>
-      <div class="col-8 m-auto pt-4 pb-2 text-center">
+      <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center">
         <div id="result"></div>
-        <input class="btn btn-success mt-4 float-end" type="submit" value="Cadastrar" />
+        <a href="/contribuintes/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
+        <input class="btn btn-success mt-4 float-end ms-2 tamanho-95" type="submit" value="Cadastrar" />
       </div>
     </form>
   </div>

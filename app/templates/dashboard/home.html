@@ -1,17 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-  {% if request.user.is_authenticated %}
-    {% comment %} <h1>Área Restrita</h1>
-    Bem Vindo <br />
-    <a href="/logouts/">Sair</a> {% endcomment %}
-    {% include "menu.html" %}
+  {% include "menu.html" %}
+  
 
-    {% if perms.admin.can_edit_users %}
-      <p>Como você tem permissão de editar usuários pode ver isso.</p>
-    {% endif %}
-  {% else %}
-    Você não tem acesso a essa área!
-  {% endif %}
 
 {% endblock %}
