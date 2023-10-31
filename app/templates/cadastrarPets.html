@@ -2,22 +2,53 @@
 
 {% block content %}
   {% include 'menu.html' %}
-
-  <div class="container">
-    <h1>Cadastrar Pets</h1>
-    <form name="form" id="form" action="{% if db%}/updatePets/{{db.id}}/{%else%}/createPets/{% endif %}" method="post">
+  <br>
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-center">Cadastro de pets:</h2>
+      <div class="card-body">
+        <form name="form" id="form" action="{% if db%}/updatePets/{{db.id}}/{%else%}/createPets/{% endif %}" method="post">
       {% csrf_token %}
       
-      <div class="form-group mt-4">Nome: {{ form.nome }}</div>
-      <div class="form-group mt-4">Raça: {{ form.raca }}</div>
-      <div class="form-group mt-4">Idade: {{ form.idade }}</div>
-      <div class="form-group mt-4">Tamanho: {{ form.tamanho }}</div>
-      <div class="form-group mt-4">Contribuinte: {{ form.contribuinte }}</div>
-      <div class="form-group mt-4">Numero identificação: {{ form.numero_identificacao }}</div>
-
-      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-control mt-4">
+            Nome: {{ form.nome }}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-control mt-4">
+            Raça: {{ form.raca }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group mt-4">
+            Idade: {{ form.idade }}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mt-4">
+            Tamanho: {{ form.tamanho }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group mt-4">
+            Contribuinte: {{ form.contribuinte }}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mt-4">
+            Numero identificação: {{ form.numero_identificacao }}
+          </div>
+        </div>
+      </div>
+     
       <a href="/pets/" class="btn btn-secondary mt-4" type="back">Voltar</a>
-      <div class="col-8 m-auto pt-4 pb-2 text-center">
+      <div class="col-10 m-auto pt-4 pb-2 text-center">
         <div id="result"></div>
         <input class="btn btn-success mt-4 float-end" type="submit" value="Cadastrar" />
       </div>
