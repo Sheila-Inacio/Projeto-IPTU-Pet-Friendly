@@ -3,17 +3,11 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="col-8 m-auto pt-2 pb-2 text-center">
-    <h1>Pagina de contribuintes</h1>
-  </div>
+  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center bi bi-house-door" style="font-size: 35px;"> CONTRIBUINTES </div>
 
-  <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/cadastrarContribuinte/" class="btn btn-success">Novo cadastro</a>
-  </div>
-
-  <div class="col-10 m-auto pt-3 pb-2 text-center">
+  <div class="col-8 m-auto pt-3 pb-2 text-center ">
     <form method="get">
-      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
+      <input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar por contribuinte..." />
     </form>
   </div>
 
@@ -35,9 +29,9 @@
             <td>{{ dbs.cpf }}</td>
             <td>{{ dbs.telefone }}</td>
             <td>{{ dbs.inscricao_municipal }}</td>
-            <td>
+
               <td>
-                <a href="/viewContribuinte/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-view-stacked"></a>
+                <a href="/viewContribuinte/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-eye left"></a>
                 <a href="/editContribuinte/{{ dbs.id }}/" class="btn btn-outline-primary bi bi-pencil-square"></a>
                 <a href="/deleteContribuinte/{{ dbs.id }}/" class="btn btn-outline-danger btnDel bi bi-trash"></a>
               </td>
@@ -57,6 +51,13 @@
       <a href="?page={{ db.next_page_number }}">></a>
     {% endif %}
   </div>
+
+
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <a href="/cadastrarContribuinte/" class="btn btn-success">Novo cadastro</a>
+  </div>
+
+
   {% load static %}
 
        <script src="{% static 'javascript.js' %}"></script>

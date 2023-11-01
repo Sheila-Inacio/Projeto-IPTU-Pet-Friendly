@@ -181,10 +181,11 @@ def relatorio(request):
     return render(request, 'relatorio.html', data)
 
 
-def viewRelatorio(request, pk):
+def viewRelatorio(request, pk, valor):
     data = {}
     data['db'] = Contribuinte.objects.get(pk=pk)
     data['pets'] = Pets.objects.filter(contribuinte__exact=pk)
+    data['valor'] = valor
     return render(request, 'viewRelatorio.html', data)
 
 # Logout do sistema:

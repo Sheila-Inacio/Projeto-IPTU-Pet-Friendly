@@ -33,8 +33,6 @@
                     result.innerHTML = 'Operação realizada com sucesso!' 
                     result.classList.add('alert');
                     result.classList.add('text-left alert-success ');
-
-
                 }
             }
             ajax.send(data);
@@ -44,4 +42,7 @@
         form.addEventListener('submit', sendForm, false)
     }
 
+    
+
 })(window, document);
+

@@ -3,17 +3,12 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="col-8 m-auto pt-2 pb-2 text-center">
-    <h1>Pagina de pets</h1>
+  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center bi bi-house-door" style="font-size: 35px;">PETS </div>
   </div>
 
   <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/cadastrarPets/" class="btn btn-success">Novo cadastro</a>
-  </div>
-
-  <div class="col-10 m-auto pt-3 pb-2 text-center">
     <form method="get">
-      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
+      <input type="text" id="search" name="search" class="form-control bi bi-search" placeholder="Pesquisar por pets..." />
     </form>
   </div>
 
@@ -35,12 +30,12 @@
           <tr>
             <td>{{ dbs.nome }}</td>
             <td>{{ dbs.raca }}</td>
-            <td>{{ dbs.idade }}</td>
+            <td>{{ dbs.idade }} ano(s)</td>
             <td>{{ dbs.tamanho }}</td>
             <td>{{ dbs.contribuinte }}</td>
             <td>{{ dbs.numero_identificacao }}</td>
             <td>
-              <a href="/viewPets/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-view-stacked"></a>
+              <a href="/viewPets/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-eye"></a>
               <a href="/editPets/{{ dbs.id }}/" class="btn btn-outline-primary bi bi-pencil-square"></a>
               <a href="/deletePets/{{ dbs.id }}/" class="btn btn-outline-danger btnDel bi bi-trash"></a>
             </td>
@@ -62,6 +57,10 @@
     {% endif %}
   </div>
 
+  
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <a href="/cadastrarPets/" class="btn btn-success">Novo cadastro</a>
+  </div>
 
   {% load static %}
 

@@ -1,7 +1,5 @@
 body {
-
-    text-decoration: none;
-    background: rgb(224, 244, 238);
+    background: rgb(1, 233, 163);
 }
 
 
@@ -22,7 +20,7 @@ body {
     height: 271px;
     display: flex;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .align-img-center {
@@ -32,14 +30,10 @@ body {
 }
 
 .tamanho-95 {
-    width: 95px;    
+    width: 95px;
 }
 
-.tamanho-100{
+.tamanho-100 {
     width: 100%;
-}
-
-.line-10{
-border-bottom-width:thin;
 }
 

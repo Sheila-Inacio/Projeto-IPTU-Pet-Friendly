@@ -45,7 +45,7 @@ urlpatterns = [
     path('updatePets/<int:pk>/', updatePets, name='updatePets'),
     path('deletePets/<int:pk>/', deletePets, name='deletePets'),
     path('relatorio/', relatorio, name="relatorio"),
-    path('viewRelatorio/<int:pk>/', viewRelatorio, name='viewRelatorio'),
+    path('viewRelatorio/<int:pk>/<int:valor>/', viewRelatorio, name='viewRelatorio'),
 
 
 
