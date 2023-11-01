@@ -2,26 +2,22 @@
 
 {% block content %}
   {% include 'menu.html' %}
-  <div class="col-8 m-auto pt-2 pb-2 text-center">
-    <h1>Visualização</h1>
-  </div>
-
-  <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/contribuintes/" class="btn btn-info">Voltar</a>
-  </div>
-
-  <div class="col-8 m-auto pt-4 pb-2 text-center">
-   <strong>Nome completo: {{ db.nome_completo }}<br />
-   <strong>CPF: {{ db.cpf }}<br />
-   <strong>E-mail: {{ db.email }}<br />
-   <strong>Telefone: {{ db.telefone}}<br />
-   <strong>Endereço: {{ db.endereco }}<br />
-   <strong>Numero: {{ db.numero }}<br />
-   <strong>Complemento: {{ db.complemento}}<br />
-   <strong>Bairro: {{ db.bairro }}<br />
-   <strong>Cidade: {{ db.cidade }}<br />
-   <strong>Estado: {{ db.estado}}<br />
-   <strong>Inscrição municipal: {{ db.inscricao_municipal }}<br />
-   <strong>Indicação fiscal: {{ db.indicacao_fiscal }}<br />
-  </div>
+  <br>
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-left">Contribuinte:</h2>
+      <div class="col-11 m-auto pt-4 pb-2 text-left">
+        <strong>Nome completo: {{ db.nome_completo }}<br />
+        <strong>CPF: {{ db.cpf }}<br />
+        <strong>E-mail: {{ db.email }}<br />
+        <strong>Telefone: {{ db.telefone}}<br />
+        <strong>Endereço: {{ db.endereco }}<br />
+        <strong>Numero: {{ db.numero }}<br />
+        <strong>Complemento: {{ db.complemento}}<br />
+        <strong>Bairro: {{ db.bairro }}<br />
+        <strong>Cidade: {{ db.cidade }}<br />
+        <strong>Estado: {{ db.estado}}<br />
+        <strong>Inscrição municipal: {{ db.inscricao_municipal }}<br />
+        <strong>Indicação fiscal: {{ db.indicacao_fiscal }}<br />
+        </div>
 {% endblock %}

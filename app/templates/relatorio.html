@@ -28,9 +28,12 @@
           <tr>
             <td>{{ dbs.nome_completo }}</td>
             <td>{{ dbs.inscricao_municipal }}</td>
-            <td>{{ dbs.endereco }}</td>
+            <td>{{ dbs.endereco }} - {{ dbs.numero }} - {{ dbs.complemento }} - {{ dbs.bairro }}</td>
             <td>{{ dbs.num_pets }} pet(s)</td>
             <td>R$ {{ dbs.valor_pets }},00</td>
+            <td>
+              <a href="/viewRelatorio/{{ dbs.id }}/" class="btn btn-secondary">Visualizar</a>
+            </td>
           </tr>
 
         {% endfor %}

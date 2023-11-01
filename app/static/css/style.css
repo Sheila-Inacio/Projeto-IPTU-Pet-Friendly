@@ -31,14 +31,6 @@ body {
     flex-direction: column;
 }
 
-
-h2 
-{
-    font: bold 14px Helvetica, Verdana, sans-serif;
-
-}
-
-
 .tamanho-95 {
     width: 95px;    
 }
@@ -47,4 +39,7 @@ h2
     width: 100%;
 }
 
+.line-10{
+border-bottom-width:thin;
+}
 

@@ -23,7 +23,7 @@
         <tr>
           <th scope="col">Nome </th>
           <th scope="col">Raça</th>
-          <th scope="='col">Idade</th>
+          <th scope="col">Idade</th>
           <th scope="col">Tamanho</th>
           <th scope="col">Contribuinte</th>
           <th scope="col">Numero identificação</th>
@@ -39,11 +39,10 @@
             <td>{{ dbs.tamanho }}</td>
             <td>{{ dbs.contribuinte }}</td>
             <td>{{ dbs.numero_identificacao }}</td>
-            
             <td>
-              <a href="/viewPets/{{ dbs.id }}/" class="btn btn-outline-secondary">Visualizar</a>
-              <a href="/editPets/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
-              <a href="/deletePets/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
+              <a href="/viewPets/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-view-stacked"></a>
+              <a href="/editPets/{{ dbs.id }}/" class="btn btn-outline-primary bi bi-pencil-square"></a>
+              <a href="/deletePets/{{ dbs.id }}/" class="btn btn-outline-danger btnDel bi bi-trash"></a>
             </td>
           </tr>
         {% endfor %}
@@ -63,6 +62,8 @@
     {% endif %}
   </div>
 
+
   {% load static %}
-  <script src="{% static 'javascript.js' %}"></script>
+
+       <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}

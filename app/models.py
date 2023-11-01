@@ -27,3 +27,4 @@ class Pets(models.Model):
     tamanho = models.CharField(max_length=100)
     contribuinte = models.ForeignKey('Contribuinte', on_delete=models.CASCADE)
     numero_identificacao = models.CharField(max_length=50)
+    

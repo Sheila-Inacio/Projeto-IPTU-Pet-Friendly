@@ -6,12 +6,14 @@ from app.models import Contribuinte
 from app.models import Pets
 from django.db.models import Count
 
+
 from django.contrib.auth import authenticate, login, logout
 
 
 # Formulário de cadastro de usuários:
 def create(request):
     return render(request, 'create.html')
+
 
 def store(request):
     data = {}
@@ -32,6 +34,8 @@ def painel(request):
     return render(request, 'painel.html')
 
 # Formulário do login:
+
+
 def dologin(request):
     data = {}
     user = authenticate(
@@ -59,7 +63,8 @@ def contribuintes(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search)
+        data['db'] = Contribuinte.objects.filter(
+            nome_completo__icontains=search)
     else:
         data['db'] = Contribuinte.objects.all()
     return render(request, 'contribuintes.html', data)
@@ -108,7 +113,7 @@ def deleteContribuinte(request, pk):
     return redirect('contribuintes')
 
 
-#Cadastro dos pets:
+# Cadastro dos pets:
 
 def pets(request):
     data = {}
@@ -119,17 +124,20 @@ def pets(request):
         data['db'] = Pets.objects.all()
     return render(request, 'pets.html', data)
 
+
 def cadastrarPets(request):
     data = {}
     data['form'] = PetsForm()
     return render(request, 'cadastrarPets.html', data)
+
 
 def createPets(request):
     form = PetsForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('/pets/')
-    
+
+
 def viewPets(request, pk):
     data = {}
     data['db'] = Pets.objects.get(pk=pk)
@@ -142,6 +150,7 @@ def editPets(request, pk):
     data['form'] = PetsForm(instance=data['db'])
     return render(request, 'cadastrarPets.html', data)
 
+
 def updatePets(request, pk):
     data = {}
     data['db'] = Pets.objects.get(pk=pk)
@@ -149,6 +158,7 @@ def updatePets(request, pk):
     if form.is_valid():
         form.save()
         return redirect('/pets/')
+
 
 def deletePets(request, pk):
     db = Pets.objects.get(pk=pk)
@@ -163,13 +173,19 @@ def relatorio(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search).annotate(num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
+        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search).annotate(
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
     else:
-        data['db'] = Contribuinte.objects.annotate(num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
+        data['db'] = Contribuinte.objects.annotate(
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
     return render(request, 'relatorio.html', data)
 
 
-
+def viewRelatorio(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    data['pets'] = Pets.objects.filter(contribuinte__exact=pk)
+    return render(request, 'viewRelatorio.html', data)
 
 # Logout do sistema:
 

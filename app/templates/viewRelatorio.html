@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  {% include 'menu.html' %}
+  <br>
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-left">Contribuinte:</h2>
+            <div class="col-11 m-auto pt-4 pb-4 text-left  ">
+              <div class="row">
+                <div class="col-md-6  border">
+                 <div class="fw-bold">Nome completo:</div> {{ db.nome_completo }}
+                </div>
+                <div class="col-md-6 border">
+                  <div class="fw-bold">CPF:</div> {{ db.cpf }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9 border">
+                  <div class="fw-bold">E-mail:</div> {{ db.email }}
+                </div>
+                <div class="col-md-3 border">
+                  <div class="fw-bold">Telefone:</div> {{ db.telefone }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 border">
+                  <div class="fw-bold">Endereço:</div> {{ db.endereco }}
+                </div>
+                <div class="col-md-2 border">
+                  <div class="fw-bold">Numero:</div> {{ db.numero }}
+                </div>
+                <div class="col-md-2 border">
+                  <div class="fw-bold">Complemento:</div> {{ db.complemento }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 border">
+                  <div class="fw-bold">Bairro:</div> {{ db.bairro }}
+                </div>
+                <div class="col-md-4 border">
+                  <div class="fw-bold">Cidade:</div> {{ db.cidade }}
+                </div>
+                <div class="col-md-4 border">
+                  <div class="fw-bold">Estado:</div> {{ db.estado }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 border">
+                  <div class="fw-bold">Inscrição municipal:</div> {{ db.inscricao_municipal }}
+                </div>
+                <div class="col-md-6 border">
+                  <div class="fw-bold">Indicação fiscal:</div> {{ db.indicacao_fiscal }}
+                </div>
+            </div>
+          </div>
+      <h2 class="card-header text-left">Pet(s):</h2>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nome </th>
+            <th scope="col">Raça</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Tamanho</th>
+            <th scope="col">Contribuinte</th>
+            <th scope="col">Numero identificação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dbs in pets %}
+            <tr>
+              <td>{{ dbs.nome }}</td>
+              <td>{{ dbs.raca }}</td>
+              <td>{{ dbs.idade }}</td>
+              <td>{{ dbs.tamanho }}</td>
+              <td>{{ dbs.contribuinte }}</td>
+              <td>{{ dbs.numero_identificacao }}</td>
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+       
+
+
+
+
+
+
+
+            <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center">
+              <div id="result"></div>
+              <a href="/relatorio/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
+              <input class="btn btn-outline-secondary mt-4 float-end ms-2 tamanho-95" type="submit" value="Imprimir" />
+            </div>
+
+          
+{% endblock %}
+  
