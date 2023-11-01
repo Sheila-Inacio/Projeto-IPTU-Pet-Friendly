@@ -19,7 +19,8 @@
           <th scope="col">Contribuinte</th>
           <th scope="='col">Inscrição Municipal</th>
              <th scope="='col">Endereço</th>
-          <th scope="col">Valor desconto</th>
+          <th scope="col">Numero de pets</th>
+          <th scope="col">Valor de desconto (R$)</th>
         </tr>
       </thead>
       <tbody>
@@ -28,8 +29,9 @@
             <td>{{ dbs.nome_completo }}</td>
             <td>{{ dbs.inscricao_municipal }}</td>
             <td>{{ dbs.endereco }}</td>
-            <td>{{ dbs.numero_identificacao }}</td>
-            <td>
+            <td>{{ dbs.num_pets }} pet(s)</td>
+            <td>R$ {{ dbs.valor_pets }},00</td>
+          </tr>
 
         {% endfor %}
       </tbody>

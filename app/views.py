@@ -4,6 +4,7 @@ from app.forms import ContriForm
 from app.forms import PetsForm
 from app.models import Contribuinte
 from app.models import Pets
+from django.db.models import Count
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -162,10 +163,13 @@ def relatorio(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search)
+        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search).annotate(num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
     else:
-        data['db'] = Contribuinte.objects.all()
+        data['db'] = Contribuinte.objects.annotate(num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
     return render(request, 'relatorio.html', data)
+
+
+
 
 # Logout do sistema:
 
