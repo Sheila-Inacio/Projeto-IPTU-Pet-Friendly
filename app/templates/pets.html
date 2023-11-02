@@ -3,12 +3,17 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center bi bi-house-door" style="font-size: 35px;">PETS </div>
+  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center" style="font-size: 35px;">PETS </div>
   </div>
-
   <div class="col-8 m-auto pt-3 pb-2 text-center">
     <form method="get">
-      <input type="text" id="search" name="search" class="form-control bi bi-search" placeholder="Pesquisar por pets..." />
+      <div class="input-group">
+        <div class="input-group-text">
+          <i class="bi bi-search"></i>
+        </div>       
+        <input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar por pets..." />
+      </div>
+      
     </form>
   </div>
 
@@ -22,7 +27,7 @@
           <th scope="col">Tamanho</th>
           <th scope="col">Contribuinte</th>
           <th scope="col">Numero identificação</th>
-          <th scope="col">Ações</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -62,7 +67,5 @@
     <a href="/cadastrarPets/" class="btn btn-success">Novo cadastro</a>
   </div>
 
-  {% load static %}
 
-       <script src="{% static 'javascript.js' %}"></script>
 {% endblock %}

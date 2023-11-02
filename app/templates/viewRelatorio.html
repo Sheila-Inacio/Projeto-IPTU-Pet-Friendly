@@ -2,9 +2,9 @@
 
 {% block content %}
   {% include 'menu.html' %}
-<br>
-  <div class="container" id="relatorio" style="max-width: 1080px; min-width: 960px;">
-    <div class="card">
+  <br />
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card" id="imprimir">
       <h2 class="card-header text-left">Contribuinte:</h2>
       <div class="col-11 m-auto pt-4 pb-4 text-left">
         <div class="row">
@@ -92,13 +92,18 @@
           </div>
         </div>
       </div>
-
-      <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center">
-        <div id="result"></div>
-        <a href="/relatorio/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
-        <input class="btn btn-outline-secondary mt-4 float-end ms-2 tamanho-95" type="submit" onclick="imprimir()"  value="Imprimir" />
-      </div>
     </div>
+
+    <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center nao-imprimir">
+      <div id="result"></div>
+      <a href="/relatorio/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
+      <input class="btn btn-outline-secondary mt-4 float-end ms-2 tamanho-95" type="submit" onclick="imprimir()" value="Imprimir" />
+    </div>
+
+    <script>
+      function imprimir() {
+        window.print()
+      }
+    </script>
   </div>
-  
 {% endblock %}

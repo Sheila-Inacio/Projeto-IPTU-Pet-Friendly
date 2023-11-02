@@ -31,8 +31,9 @@
                 if (ajax.status == 200 && ajax.readyState == 4) {
                     let result = doc.querySelector('#result');
                     result.innerHTML = 'Operação realizada com sucesso!' 
-                    result.classList.add('alert');
-                    result.classList.add('text-left alert-success ');
+                    result.classList.add('alert')
+                    result.classList.add('alert-success');
+                    result.classList.add('text-center');
                 }
             }
             ajax.send(data);

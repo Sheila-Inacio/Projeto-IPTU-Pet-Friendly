@@ -3,21 +3,55 @@
 {% block content %}
   {% include 'menu.html' %}
   <br>
-  <div class="container" style="max-width: 1080px; min-width: 960px;">
+
+  <div class="container" id="relatorio" style="max-width: 1080px; min-width: 960px;">
     <div class="card">
-      <h2 class="card-header text-left">Contribuinte:</h2>
-      <div class="col-11 m-auto pt-4 pb-2 text-left">
-        <strong>Nome completo: {{ db.nome_completo }}<br />
-        <strong>CPF: {{ db.cpf }}<br />
-        <strong>E-mail: {{ db.email }}<br />
-        <strong>Telefone: {{ db.telefone}}<br />
-        <strong>Endereço: {{ db.endereco }}<br />
-        <strong>Numero: {{ db.numero }}<br />
-        <strong>Complemento: {{ db.complemento}}<br />
-        <strong>Bairro: {{ db.bairro }}<br />
-        <strong>Cidade: {{ db.cidade }}<br />
-        <strong>Estado: {{ db.estado}}<br />
-        <strong>Inscrição municipal: {{ db.inscricao_municipal }}<br />
-        <strong>Indicação fiscal: {{ db.indicacao_fiscal }}<br />
+      <h2 class="card-header text-left">Visualização contribuinte:</h2>
+      <div class="col-11 m-auto pt-4 pb-4 text-left">
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">Nome completo: </div> {{ db.nome_completo }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">CPF: </div> {{ db.cpf }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">E-mail: </div> {{ db.email }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">Telefone: </div> {{ db.telefone }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 border">
+            <div class="fw-bold">Endereço: </div> {{ db.endereco }}
+          </div>
+          <div class="col-md-2 border">
+            <div class="fw-bold">Numero: </div> {{ db.numero }}
+          </div>
+          <div class="col-md-2 border">
+            <div class="fw-bold">Complemento: </div> {{ db.complemento }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 border">
+            <div class="fw-bold">Bairro: </div> {{ db.bairro }}
+          </div>
+          <div class="col-md-4 border">
+            <div class="fw-bold">Cidade: </div> {{ db.cidade }}
+          </div>
+          <div class="col-md-4 border">
+            <div class="fw-bold">Estado: </div> {{ db.estado }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">Inscrição municipal: </div> {{ db.inscricao_municipal }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">Indicação fiscal: </div> {{ db.indicacao_fiscal }}
+          </div>
         </div>
 {% endblock %}

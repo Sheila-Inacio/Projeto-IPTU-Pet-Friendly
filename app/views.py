@@ -174,10 +174,10 @@ def relatorio(request):
     search = request.GET.get('search')
     if search:
         data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search).annotate(
-            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*30)
     else:
         data['db'] = Contribuinte.objects.annotate(
-            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*50)
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*30)
     return render(request, 'relatorio.html', data)
 
 
