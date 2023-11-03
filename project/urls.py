@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, viewContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, listarCarros, cadastrarCarros, createCarros, viewCarros, editCarros, updateCarros, deleteCarros, relatorio
+from app.views import painel, create, store, dologin, dashboard, logouts, contribuintes, cadastrarContribuinte, createContribuinte, viewContribuinte, editContribuinte, updateContribuinte, deleteContribuinte, pets, cadastrarPets, createPets, viewPets, editPets, updatePets, deletePets,  relatorio, viewRelatorio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,19 +28,26 @@ urlpatterns = [
     path('dashboard/', dashboard, name="dashboard"),
     path('logouts/', logouts, name="logouts"),
     path('contribuintes/', contribuintes, name="contribuintes"),
-    path('cadastrarContribuinte/', cadastrarContribuinte, name="cadastrarContribuinte"),
+    path('cadastrarContribuinte/', cadastrarContribuinte,
+         name="cadastrarContribuinte"),
     path('createContribuinte/', createContribuinte, name="createContribuinte"),
     path('viewContribuinte/<int:pk>/', viewContribuinte, name='viewContribuinte'),
     path('editContribuinte/<int:pk>/', editContribuinte, name='editContribuinte'),
-    path('updateContribuinte/<int:pk>/', updateContribuinte, name='updateContribuinte'),
-    path('deleteContribuinte/<int:pk>/', deleteContribuinte, name='deleteContribuinte'),
-    path('listarCarros/', listarCarros, name="listarCarros"),
-    path('cadastrarCarros/', cadastrarCarros, name="cadastrarCarros"),
-    path('createCarros/', createCarros, name="createCarros"),
-    path('viewCarros/<int:pk>/', viewCarros, name='viewCarros'),
-    path('editCarros/<int:pk>/', editCarros, name='editCarros'),
-    path('updateCarros/<int:pk>/', updateCarros, name='updateCarros'),
-    path('deleteCarros/<int:pk>/', deleteCarros, name='deleteCarros'),
+    path('updateContribuinte/<int:pk>/',
+         updateContribuinte, name='updateContribuinte'),
+    path('deleteContribuinte/<int:pk>/',
+         deleteContribuinte, name='deleteContribuinte'),
+    path('pets/', pets, name="pets"),
+    path('cadastrarPets/', cadastrarPets, name="cadastrarPets"),
+    path('createPets/', createPets, name="createPets"),
+    path('viewPets/<int:pk>/', viewPets, name='viewPets'),
+    path('editPets/<int:pk>/', editPets, name='editPets'),
+    path('updatePets/<int:pk>/', updatePets, name='updatePets'),
+    path('deletePets/<int:pk>/', deletePets, name='deletePets'),
     path('relatorio/', relatorio, name="relatorio"),
+    path('viewRelatorio/<int:pk>/<int:valor>/', viewRelatorio, name='viewRelatorio'),
+
+
+
 
 ]

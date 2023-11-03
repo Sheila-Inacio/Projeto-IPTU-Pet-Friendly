@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-  <div class="login-page bg-light">
+  <div class="login-page bg-light fundo">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
@@ -20,7 +20,7 @@
                       <label>Usuário<span class="text-danger">*</span></label>
                       <div class="input-group">
                         <div class="input-group-text">
-                          <i class="bi bi-person-fill"></i>
+                          <i class="bi bi-person-bounding-box"></i>
                         </div>
                         <input type="text" class="form-control" name="user" id="name" placeholder="Nome de usuário" />
                       </div>
@@ -35,33 +35,31 @@
                         <input type="password" class="form-control" name="password" id="password" placeholder="Senha" />
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mt-2">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="inlineFormCheck" />
                         <label class="form-check-label" for="inlineFormCheck">Remember me</label>
                       </div>
                     </div>
 
-                    <div class="col-sm-6">
-                      <a href="/create/" class="float-end text-primary">Não sou cadastrado</a>
+                    <div class="d-inline-flex gap-1 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-success px-4 float-center mt-4 tamanho-100">Entrar</button>
                     </div>
-
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-success px-4 float-end mt-4">Entrar</button>
-                    </div>
+                    <p class="text-end text-gray-700 text-center mt-4">
+                      Não tem uma conta? <a href="/create/" class="text-blue-500">Cadastre-se</a>
+                    </p>
                   </form>
                 </div>
               </div>
-              <div class="col-md-5 ps-0 align-img-center">
-                <img class="img-dog mt-3"  src="https://i.pinimg.com/564x/83/b5/d6/83b5d65ba9071f89ced227a50e7ebe99.jpg" />
-                <i class="#"></i>
-                <h2 class="text-center fs-8">Bem vindo</h2>
-                <h2 class="text-center mb-3 fs-10">IPTU Pet Friendly</h2>
+              <div class="col-md-5 ps-0 align-img-center fundo-imagem">
+                <img class="img-dog mt-3" src="https://uploaddeimagens.com.br/images/004/654/907/original/Frame_46.png?1699016793" />
               </div>
             </div>
           </div>
         </div>
-        <p class="text-end text-secondary mt-3">Projeto DB1 START - Sheila Inácio</p>
+        <div class="col-lg-10 offset-lg-1 d-flex justify-content-end">
+          <p class="text-secondary mt-3">Projeto DB1 START - Sheila Inácio</p>
+        </div>
       </div>
     </div>
   </div>

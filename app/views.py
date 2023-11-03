@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from app.forms import ContriForm
-from app.forms import CarrosForm
+from app.forms import PetsForm
 from app.models import Contribuinte
-from app.models import Carros
+from app.models import Pets
+from django.db.models import Count
+
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -12,15 +14,12 @@ from django.contrib.auth import authenticate, login, logout
 def create(request):
     return render(request, 'create.html')
 
-# Inserção dos dados dos usuários:
-
 
 def store(request):
     data = {}
     if (request.POST['password'] != request.POST['password-conf']):
         data['msg'] = 'Senha e confirmação de senha diferentes!'
         data['class'] = 'alert-danger'
-
     else:
         user = User.objects.create_user(
             request.POST['name'], request.POST['email'], request.POST['password'])
@@ -28,17 +27,15 @@ def store(request):
         user.save()
         data['msg'] = 'Usuário cadastrado com sucesso.'
         data['class'] = 'alert-success'
-
     return render(request, 'create.html', data)
-
-# Formulário do painel de login:
 
 
 def painel(request):
     return render(request, 'painel.html')
 
-
 # Formulário do login:
+
+
 def dologin(request):
     data = {}
     user = authenticate(
@@ -70,10 +67,14 @@ def contribuintes(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Contribuinte.objects.filter(modelo__icontains=search)
+        data['db'] = Contribuinte.objects.filter(
+            nome_completo__icontains=search)
     else:
         data['db'] = Contribuinte.objects.all()
     return render(request, 'contribuintes.html', data)
+
+# Formulário usuário:
+
 
 def cadastrarContribuinte(request):
     data = {}
@@ -91,11 +92,25 @@ def viewContribuinte(request, pk):
     data['db'] = Contribuinte.objects.get(pk=pk)
     return render(request, 'viewContribuinte.html', data)
 
+def createContribuinte(request):
+    form = ContriForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/contribuintes/')
+
+
+def viewContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    return render(request, 'viewContribuinte.html', data)
+
+
 def editContribuinte(request, pk):
     data = {}
     data['db'] = Contribuinte.objects.get(pk=pk)
     data['form'] = ContriForm(instance=data['db'])
     return render(request, 'cadastrarContribuinte.html', data)
+
 
 def updateContribuinte(request, pk):
     data = {}
@@ -110,56 +125,86 @@ def deleteContribuinte(request, pk):
     db.delete()
     return redirect('contribuintes')
 
-# PAGINA DE PETS:
-def listarCarros(request):
+def deleteContribuinte(request, pk):
+    db = Contribuinte.objects.get(pk=pk)
+    db.delete()
+    return redirect('contribuintes')
+
+
+# Cadastro dos pets:
+
+def pets(request):
     data = {}
     search = request.GET.get('search')
     if search:
-        data['db'] = Carros.objects.filter(modelo__icontains=search)
+        data['db'] = Pets.objects.filter(nome__icontains=search)
     else:
-        data['db'] = Carros.objects.all()
-    return render(request, 'listarCarros.html', data)
+        data['db'] = Pets.objects.all()
+    return render(request, 'pets.html', data)
 
-def cadastrarCarros(request):
+
+def cadastrarPets(request):
     data = {}
-    data['form'] = CarrosForm()
-    return render(request, 'cadastrarCarros.html', data)
+    data['form'] = PetsForm()
+    return render(request, 'cadastrarPets.html', data)
 
-def createCarros(request):
-    form = CarrosForm(request.POST or None)
+
+def createPets(request):
+    form = PetsForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('listarCarros')
+        return redirect('/pets/')
 
-def viewCarros(request, pk):
-    data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    return render(request, 'viewContribuinte.html', data)
 
-def editCarros(request, pk):
+def viewPets(request, pk):
     data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    data['form'] = CarrosForm(instance=data['db'])
-    return render(request, 'cadastrarCarros.html', data)
+    data['db'] = Pets.objects.get(pk=pk)
+    return render(request, 'viewPets.html', data)
 
-def updateCarros(request, pk):
+
+def editPets(request, pk):
     data = {}
-    data['db'] = Carros.objects.get(pk=pk)
-    form = CarrosForm(request.POST or None, instance=data['db'])
+    data['db'] = Pets.objects.get(pk=pk)
+    data['form'] = PetsForm(instance=data['db'])
+    return render(request, 'cadastrarPets.html', data)
+
+
+def updatePets(request, pk):
+    data = {}
+    data['db'] = Pets.objects.get(pk=pk)
+    form = PetsForm(request.POST or None, instance=data['db'])
     if form.is_valid():
         form.save()
-        return redirect('/listarCarros/')
-    
-def deleteCarros(request, pk):
-    db = Carros.objects.get(pk=pk)
+        return redirect('/pets/')
+
+
+def deletePets(request, pk):
+    db = Pets.objects.get(pk=pk)
     db.delete()
-    return redirect('listarCarros')
+    return redirect('pets')
+
 
 # Relatório de todos os cadastros:
 
 
 def relatorio(request):
-    return render(request, 'relatorio.html')
+    data = {}
+    search = request.GET.get('search')
+    if search:
+        data['db'] = Contribuinte.objects.filter(nome_completo__icontains=search).annotate(
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*30)
+    else:
+        data['db'] = Contribuinte.objects.annotate(
+            num_pets=Count('pets')).annotate(valor_pets=Count('pets')*30)
+    return render(request, 'relatorio.html', data)
+
+
+def viewRelatorio(request, pk, valor):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    data['pets'] = Pets.objects.filter(contribuinte__exact=pk)
+    data['valor'] = valor
+    return render(request, 'viewRelatorio.html', data)
 
 # Logout do sistema:
 

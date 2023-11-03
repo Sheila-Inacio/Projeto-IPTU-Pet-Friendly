@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  {% include 'menu.html' %}
+<br>
+
+  <div class="container" id="relatorio" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-left">Visualização pet: </h2>
+      <div class="col-11 m-auto pt-4 pb-4 text-left">
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">Nome:</div> {{ db.nome }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">Raça:</div> {{ db.raca }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">Idade:</div> {{ db.idade }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">Tamanho: </div> {{ db.tamanho }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 border">
+            <div class="fw-bold">Contribuinte:</div> {{ db.contribuinte }}
+          </div>
+          <div class="col-md-6 border">
+            <div class="fw-bold">Numero identificação:</div> {{ db.numero_identificacao }}
+          </div>          
+        </div>
+        
+{% endblock %}

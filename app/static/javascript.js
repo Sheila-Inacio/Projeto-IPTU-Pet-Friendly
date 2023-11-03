@@ -30,11 +30,10 @@
             ajax.onreadystatechange = function () {
                 if (ajax.status == 200 && ajax.readyState == 4) {
                     let result = doc.querySelector('#result');
-                    result.innerHTML = 'Operação realizada com sucesso! '
-                    result.classList.add('alert');
+                    result.innerHTML = 'Operação realizada com sucesso!' 
+                    result.classList.add('alert')
                     result.classList.add('alert-success');
-
-
+                    result.classList.add('text-center');
                 }
             }
             ajax.send(data);
@@ -44,4 +43,7 @@
         form.addEventListener('submit', sendForm, false)
     }
 
+    
+
 })(window, document);
+

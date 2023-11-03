@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  {% include 'menu.html' %}
+  <br>
+  <div id="result"></div>
+  <div class="container" style="max-width: 1080px; min-width: 960px;">
+    <div class="card">
+      <h2 class="card-header text-center">Cadastro de pets:</h2>
+      <div class="card-body">
+        <form name="form" id="form" action="{% if db%}/updatePets/{{db.id}}/{%else%}/createPets/{% endif %}" method="post">
+      {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+          {{form.nome|as_crispy_field}}
+          </div>
+          <div class="col-md-6">
+          {{form.raca|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          {{form.idade|as_crispy_field}}
+          </div>
+          <div class="col-md-6">
+          {{form.tamanho|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          {{form.contribuinte|as_crispy_field}}
+          </div>
+          <div class="col-md-6">
+          {{form.numero_identificacao|as_crispy_field}}
+          </div>
+        </div>
+     
+      <div class="col-12 m-auto pt-4 pb-2 d-flex justify-content-center">        
+        <a href="/pets/" class="btn btn-secondary mt-4 me-2 tamanho-95" type="back">Voltar</a>
+        <input class="btn btn-success mt-4 float-end ms-2 tamanho-95" type="submit" value="Cadastrar" />
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
+

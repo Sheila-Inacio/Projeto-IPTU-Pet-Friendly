@@ -1,17 +1,35 @@
 {% extends 'main.html' %}
-
 {% block content %}
-  {% if request.user.is_authenticated %}
-    {% comment %} <h1>Área Restrita</h1>
-    Bem Vindo <br />
-    <a href="/logouts/">Sair</a> {% endcomment %}
-    {% include "menu.html" %}
+  {% include 'menu.html' %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
+  <div class="container-carousel">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
 
-    {% if perms.admin.can_edit_users %}
-      <p>Como você tem permissão de editar usuários pode ver isso.</p>
-    {% endif %}
-  {% else %}
-    Você não tem acesso a essa área!
-  {% endif %}
-
+      <div class="carousel-inner container-carousel">
+        <div class="col-11 m-auto pt-4 pb-4 text-left">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img class="img-carousel" src="https://a.imagem.app/oXt8v8.png" alt="oXCzLa.png" border="0" />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img class="img-carousel" src="https://uploaddeimagens.com.br/images/004/654/928/full/02.png?1699017899" alt="oXwPMr.png" border="0" />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img class="img-carousel" src="https://uploaddeimagens.com.br/images/004/654/934/full/03.png?1699018009" alt="oXCb5i.png" border="0" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 {% endblock %}

@@ -3,29 +3,28 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="col-8 m-auto pt-2 pb-2 text-center">
-    <h1>Pagina de contribuintes</h1>
-  </div>
+  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center bi bi-house-door" style="font-size: 35px;"> CONTRIBUINTES </div>
 
-  <div class="col-8 m-auto pt-3 pb-2 text-center">
-    <a href="/cadastrarContribuinte/" class="btn btn-success">Novo contribuinte:</a>
-  </div>
-
-  <div class="col-8 m-auto pt-3 pb-2 text-center">
+  <div class="col-8 m-auto pt-3 pb-2 text-center ">
     <form method="get">
-      <input type="text" id="search" name="search" class="form-control" placeholder="Buscar ..." />
+      <div class="input-group">
+        <div class="input-group-text">
+          <i class="bi bi-search"></i>
+        </div>       
+        <input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar por contribuinte..." />
+      </div>      
     </form>
   </div>
 
-  <div class="col-8 m-auto pt-4 pb-2 text-center">
+  <div class="col-10 m-auto pt-4 pb-2 text-left">
     <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nome completo</th>
           <th scope="col">CPF</th>
-          <th scope="='col">Telefone</th>
-          <th scope="col">Inscrição_municipal</th>
-          <th scope="col">Ações</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Inscrição Municipal</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -35,17 +34,17 @@
             <td>{{ dbs.cpf }}</td>
             <td>{{ dbs.telefone }}</td>
             <td>{{ dbs.inscricao_municipal }}</td>
-            <td>
-              <a href="/viewContribuinte/{{ dbs.id }}/" class="btn btn-dark">Visualizar</a>
-              <a href="/editContribuinte/{{ dbs.id }}/" class="btn btn-primary">Editar</a>
-              <a href="/deleteContribuinte/{{ dbs.id }}/" class="btn btn-danger btnDel">Deletar</a>
-            </td>
+
+              <td>
+                <a href="/viewContribuinte/{{ dbs.id }}/" class="btn btn-outline-secondary bi bi-eye left"></a>
+                <a href="/editContribuinte/{{ dbs.id }}/" class="btn btn-outline-primary bi bi-pencil-square"></a>
+                <a href="/deleteContribuinte/{{ dbs.id }}/" class="btn btn-outline-danger btnDel bi bi-trash"></a>
+              </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-
   <div class="pagination">
     {% if db.has_previous %}
       <a href="?page={{ db.previous_page_number }}"><</a>
@@ -58,6 +57,10 @@
     {% endif %}
   </div>
 
-  {% load static %}
-  <script src="{% static 'javascript.js' %}"></script>
+
+  <div class="col-8 m-auto pt-3 pb-2 text-center">
+    <a href="/cadastrarContribuinte/" class="btn btn-success">Novo cadastro</a>
+  </div>
+
+
 {% endblock %}
