@@ -6,13 +6,14 @@ body {
     background-color: #D4EBC5;
 }
 
-
 .login-page {
-    width: 100%;
-    height: 100vh;
-    display: inline-block;
-    display: flex;
-    align-items: center;
+    background-color: rgba(239, 239, 239, 0.5)
+    width:100%;
+    height:100vh;
+    display:inline-block
+    display:flex
+    align-items:center
+    
 }
 
 .form-right i {
@@ -23,7 +24,6 @@ body {
     width: 400px;
     height: 390px;
     display: flex;
-   
     border-radius: 10px;
 }
 
@@ -32,15 +32,12 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 .tamanho-95 {
     width: 95px;
 }
-
 .tamanho-100 {
     width: 100%;
 }
-
 @media print {
     .nao-imprimir {
         visibility: hidden;
@@ -58,17 +55,16 @@ body {
     height: 80px;
 }
 
-
-
-.img-fundo {
-    background-image: url(https://cdn.jornaldebrasilia.com.br/wp-content/uploads/2019/06/pet-1000x600.jpg); 
-    width: 100%;
-    height: 100%;
-    
-
-  
+.fundo {
+    background: url(https://uploaddeimagens.com.br/images/004/654/956/original/1-13-moveis-e-brinquedos-de-pet-que-vocecc82-pode-fazer-neste-fim-de-semana.jpg?1699018548);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.fundo-imagem{
+    background:rgba(212, 235, 197, 1);
+    border-radius: 10px;
+}
 /*pagina inicial*/
 
 .img-carousel {
