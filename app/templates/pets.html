@@ -3,17 +3,17 @@
 {% block content %}
   {% include 'menu.html' %}
 
-  <div class="col-8 m-auto pt-2 pb-2 fw-bolder text-center" style="font-size: 35px;">PETS </div>
+  <div class="col-8 m-auto pt-1 pb-1 fw-bolder text-center" style="font-size:35px">
+    <img class="img-pet"src="https://static.thenounproject.com/png/11640-200.png">PETS
   </div>
   <div class="col-8 m-auto pt-3 pb-2 text-center">
     <form method="get">
       <div class="input-group">
         <div class="input-group-text">
           <i class="bi bi-search"></i>
-        </div>       
+        </div>
         <input type="text" id="search" name="search" class="form-control" placeholder="Pesquisar por pets..." />
       </div>
-      
     </form>
   </div>
 
@@ -21,7 +21,7 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Nome </th>
+          <th scope="col">Nome</th>
           <th scope="col">Raça</th>
           <th scope="col">Idade</th>
           <th scope="col">Tamanho</th>
@@ -62,10 +62,7 @@
     {% endif %}
   </div>
 
-  
   <div class="col-8 m-auto pt-3 pb-2 text-center">
     <a href="/cadastrarPets/" class="btn btn-success">Novo cadastro</a>
   </div>
-
-
 {% endblock %}
