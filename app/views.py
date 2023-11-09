@@ -59,6 +59,10 @@ def dashboard(request):
 # Pagina usuário:
 
 
+
+
+# PAGINA DE CONTRIBUINTES:
+
 def contribuintes(request):
     data = {}
     search = request.GET.get('search')
@@ -77,6 +81,16 @@ def cadastrarContribuinte(request):
     data['form'] = ContriForm()
     return render(request, 'cadastrarContribuinte.html', data)
 
+def createContribuinte(request):
+    form = ContriForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/contribuintes/')
+    
+def viewContribuinte(request, pk):
+    data = {}
+    data['db'] = Contribuinte.objects.get(pk=pk)
+    return render(request, 'viewContribuinte.html', data)
 
 def createContribuinte(request):
     form = ContriForm(request.POST or None)
@@ -106,6 +120,10 @@ def updateContribuinte(request, pk):
         form.save()
         return redirect('/contribuintes/')
 
+def deleteContribuinte(request, pk):
+    db = Contribuinte.objects.get(pk=pk)
+    db.delete()
+    return redirect('contribuintes')
 
 def deleteContribuinte(request, pk):
     db = Contribuinte.objects.get(pk=pk)
